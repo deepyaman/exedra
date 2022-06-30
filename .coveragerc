@@ -1,0 +1,15 @@
+[paths]
+source =
+    ../exedra
+    */site-packages/exedra
+
+[run]
+branch = true
+parallel = true
+source =
+    exedra
+    .
+
+[report]
+show_missing = true
+precision = 2
