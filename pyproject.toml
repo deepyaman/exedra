@@ -9,5 +9,9 @@ license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 
+[project.optional-dependencies]
+test = ["tox ~=3.3"]
+kfp = ["kfp ~=2.0b0"]
+
 [project.urls]
 Home = "https://github.com/deepyaman/exedra"
