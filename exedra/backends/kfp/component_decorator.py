@@ -1,4 +1,7 @@
-from typing import Callable, _GenericAlias
+# Mypy doesn't use ``typing`` from the standard library; it uses the one
+# from typeshed. ``_GenericAlias`` is missing from the .pyi in typeshed.
+# To understand why, see https://github.com/python/typeshed/issues/4694.
+from typing import Callable, _GenericAlias  # type: ignore[attr-defined]
 
 import kfp.dsl
 from kfp.components import python_component
@@ -12,7 +15,7 @@ TYPE_MAPPING = {
 }
 
 
-def _map_annotation(annotation: _GenericAlias):
+def _map_annotation(annotation: _GenericAlias) -> _GenericAlias:
     return TYPE_MAPPING[annotation.__origin__][TYPE_MAPPING[annotation.__args__[0]]]
 
 

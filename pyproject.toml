@@ -18,3 +18,10 @@ Home = "https://github.com/deepyaman/exedra"
 
 [tool.isort]
 profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "exedra.*"
+disallow_untyped_defs = true
