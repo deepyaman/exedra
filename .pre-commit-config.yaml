@@ -35,3 +35,6 @@ repos:
     hooks:
     -   id: isort
         name: isort (python)
+
+ci:
+    autoupdate_commit_msg: 'chore(pre-commit.ci): autoupdate the hook versions'
