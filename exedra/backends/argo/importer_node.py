@@ -17,8 +17,6 @@ from exedra.backends.argo import component, pipeline_task
 INPUT_KEY = "uri"
 OUTPUT_KEY = "artifact"
 
-# it explicitly or by the image (as the minimal "hello-world" does). See
-
 # Argo Workflows requires that `command` be specified for containers, be
 # it explicitly or by the image. See the docs for the emissary executor:
 # https://argoproj.github.io/argo-workflows/workflow-executors/#emissary-emissary
