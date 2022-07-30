@@ -15,3 +15,4 @@ class PipelineTask:
         input_mapping: dict[str, IoArgoprojWorkflowV1alpha1Artifact],
     ):
         self.template = template
+        self.input_mapping = input_mapping
