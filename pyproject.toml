@@ -11,6 +11,7 @@ dynamic = ["version", "description"]
 
 [project.optional-dependencies]
 test = ["tox ~=3.3"]
+argo = ["argo-workflows ~=6.3.0rc2"]
 kfp = ["kfp ~=2.0b0"]
 
 [project.urls]
