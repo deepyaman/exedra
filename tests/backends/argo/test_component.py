@@ -40,10 +40,25 @@ def expectation(request):
 
 
 @pytest.mark.parametrize(
+    "mock_component,expectation",
+    [(["input1"], "test_component() got an unexpected keyword argument 'input2'")],
+    indirect=True,
+)
+def test_invalid_arguments(mock_component, expectation):
+    with expectation:
+        mock_component(input2=2)
+
+
+@pytest.mark.parametrize(
     "mock_component,args,kwargs,expectation",
     [
         ([], [], {}, None),
-        ([], [1], {}, "test_component() takes 0 positional arguments but 1 was given"),
+        (
+            [],
+            [1],
+            {},
+            "test_component() takes 0 positional arguments but 1 was given",
+        ),
         (
             [],
             [1, 2],
@@ -73,24 +88,21 @@ def test_too_many_arguments(mock_component, args, kwargs, expectation):
 
 
 @pytest.mark.parametrize(
-    "mock_component,args,kwargs,expectation",
+    "mock_component,kwargs,expectation",
     [
         (
             ["input1"],
-            [],
             {},
             "test_component() missing 1 required keyword-only argument: 'input1'",
         ),
         (
             ["input1", "input2", "input3"],
-            [],
-            {"input2": 2},
-            "test_component() missing 2 required keyword-only arguments: 'input1' and "
+            {"input1": "hello"},
+            "test_component() missing 2 required keyword-only arguments: 'input2' and "
             "'input3'",
         ),
         (
             ["input1", "input2", "input3", "input4", "input5"],
-            [],
             {},
             "test_component() missing 5 required keyword-only arguments: 'input1', "
             "'input2', 'input3', 'input4', and 'input5'",
@@ -98,6 +110,6 @@ def test_too_many_arguments(mock_component, args, kwargs, expectation):
     ],
     indirect=["mock_component", "expectation"],
 )
-def test_too_few_and_missing_arguments(mock_component, args, kwargs, expectation):
+def test_too_few_and_missing_arguments(mock_component, kwargs, expectation):
     with expectation:
-        mock_component(*args, **kwargs)
+        mock_component(**kwargs)
