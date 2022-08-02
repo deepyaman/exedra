@@ -22,12 +22,14 @@ class Component:
             if kwargs:
                 raise TypeError(
                     f"{self.name}() takes 0 positional arguments but {nargs} "
-                    f"positional arguments (and {len(kwargs)} keyword-only "
+                    f"positional argument{'' if nargs == 1 else 's'} (and "
+                    f"{len(kwargs)} keyword-only "
                     f"argument{'' if len(kwargs) == 1 else 's'}) were given"
                 )
             else:
                 raise TypeError(
-                    f"{self.name}() takes 0 positional arguments but {nargs} were given"
+                    f"{self.name}() takes 0 positional arguments but {nargs} "
+                    f"{'was' if nargs == 1 else 'were'} given"
                 )
 
         input_mapping = {}  # TODO(deepyaman): Handle optional arguments
