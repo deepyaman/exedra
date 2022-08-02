@@ -97,7 +97,7 @@ def test_too_many_arguments(mock_component, args, kwargs, expectation):
         ),
         (
             ["input1", "input2", "input3"],
-            {"input1": "hello"},
+            {"input1": "hello"},  # FIXME(deepyaman): {"input1": 1} fails (invalid type)
             "test_component() missing 2 required keyword-only arguments: 'input2' and "
             "'input3'",
         ),
