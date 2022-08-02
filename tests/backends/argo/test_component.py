@@ -1,5 +1,4 @@
 import re
-from contextlib import nullcontext as does_not_raise
 
 import pytest
 from argo_workflows.model.io_argoproj_workflow_v1alpha1_artifact import (
@@ -32,11 +31,7 @@ def mock_component(request):
 
 @pytest.fixture
 def expectation(request):
-    return (
-        pytest.raises(TypeError, match=re.escape(request.param))
-        if request.param is not None
-        else does_not_raise()
-    )
+    return pytest.raises(TypeError, match=re.escape(request.param))
 
 
 @pytest.mark.parametrize(
@@ -52,7 +47,6 @@ def test_invalid_arguments(mock_component, expectation):
 @pytest.mark.parametrize(
     "mock_component,args,kwargs,expectation",
     [
-        ([], [], {}, None),
         (
             [],
             [1],
