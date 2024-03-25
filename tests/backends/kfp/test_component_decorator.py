@@ -21,8 +21,7 @@ def test_component_decorator():
     def transform(
         clean_data: dsl.Input[dsl.Dataset],
         transformed_data: dsl.Output[dsl.Dataset],
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     got = transform
 
@@ -32,8 +31,7 @@ def test_component_decorator():
     def transform(
         clean_data: dsl.Input[dsl.Dataset],
         transformed_data: dsl.Output[dsl.Dataset],
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     expected = transform
 
